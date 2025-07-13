@@ -5,30 +5,30 @@ body {
     padding: 0;
     background-color: #fce4ec; /* Rosa muy claro para el fondo */
     color: #333;
-    line-height: 1.4; /* Espaciado de línea más compacto */
+    line-height: 1.3; /* Espaciado de línea aún más compacto */
     overflow-x: hidden; /* Evita scroll horizontal no deseado */
-    font-size: 14px; /* Fuente base ligeramente más pequeña para mayor densidad */
+    font-size: 13px; /* Fuente base más pequeña */
 }
 
 /* Header Styles */
 header {
     background-color: #e91e63; /* Rosa vibrante */
     color: white;
-    padding: 10px 0; /* Menos padding aún */
+    padding: 8px 0; /* Menos padding */
     text-align: center;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-    margin-bottom: 15px; /* Menos margen */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 12px; /* Menos margen */
 }
 
 header h1 {
     margin: 0;
-    font-size: 2em; /* Tamaño de fuente más reducido */
-    letter-spacing: 0.8px;
+    font-size: 1.8em; /* Tamaño de fuente más reducido */
+    letter-spacing: 0.5px;
 }
 
 header h2 {
-    margin: 3px 0 8px; /* Menos margen */
-    font-size: 1.1em; /* Tamaño de fuente más reducido */
+    margin: 2px 0 6px; /* Menos margen */
+    font-size: 1em; /* Tamaño de fuente más reducido */
     font-weight: 400;
     opacity: 0.9;
 }
@@ -36,54 +36,53 @@ header h2 {
 /* Legend Styles */
 .legend {
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 10px 12px; /* Menos padding */
-    margin: 8px auto 0;
-    border-radius: 6px; /* Borde más pequeño */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    max-width: 95%; /* Más flexible */
+    padding: 8px 10px; /* Menos padding */
+    margin: 6px auto 0;
+    border-radius: 5px; /* Borde más pequeño */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    max-width: 98%; /* Más flexible */
     text-align: left;
     color: #333;
-    font-size: 0.85em; /* Fuente más pequeña */
+    font-size: 0.8em; /* Fuente más pequeña */
 }
 
 .legend h3 {
     margin-top: 0;
-    font-size: 1em; /* Fuente más pequeña */
+    font-size: 0.95em; /* Fuente más pequeña */
     color: #e91e63;
     border-bottom: 1px solid #f8bbd0;
-    padding-bottom: 5px;
-    margin-bottom: 8px;
+    padding-bottom: 4px;
+    margin-bottom: 6px;
 }
 
 #category-legend {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px 10px; /* Espaciado más pequeño */
+    gap: 5px 8px; /* Espaciado más pequeño */
     justify-content: center;
 }
 
 .legend-item {
     display: flex;
     align-items: center;
-    font-size: 0.8em; /* Fuente más pequeña */
+    font-size: 0.75em; /* Fuente más pequeña */
 }
 
 .legend-color-box {
-    width: 16px; /* Tamaño más pequeño */
-    height: 16px; /* Tamaño más pequeño */
+    width: 14px; /* Tamaño más pequeño */
+    height: 14px; /* Tamaño más pequeño */
     border-radius: 3px;
-    margin-right: 5px; /* Margen más pequeño */
+    margin-right: 4px; /* Margen más pequeño */
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* Main Malla Container - AJUSTE CLAVE AQUÍ */
 #malla-container {
     display: grid;
-    /* Permite más columnas, minmax reducido para semestres más delgados */
-    /* Calcula hasta 11 columnas si el ancho de pantalla lo permite */
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* ¡Ajuste importante aquí! */
-    gap: 10px; /* Espaciado entre columnas/filas más pequeño */
-    padding: 10px; /* Padding reducido */
+    /* Reducimos el minmax aún más, apuntando a que cada semestre sea ~120px */
+    grid-template-columns: repeat(auto-fit, minmax(115px, 1fr)); /* ¡Ajuste importante aquí! */
+    gap: 8px; /* Espaciado entre columnas/filas más pequeño */
+    padding: 8px; /* Padding reducido */
     max-width: 100%; /* Ocupa el ancho completo disponible */
     margin: 0 auto;
     box-sizing: border-box; /* Incluye padding en el ancho total */
@@ -92,40 +91,40 @@ header h2 {
 /* Semestre Column Styles - Ligeramente más compactos */
 .semestre-column {
     background-color: #fff;
-    border-radius: 8px; /* Borde un poco más pequeño */
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
-    padding: 10px; /* Padding reducido */
+    border-radius: 7px; /* Borde un poco más pequeño */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
+    padding: 8px; /* Padding reducido */
     text-align: center;
-    transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
 }
 
 .semestre-column:hover {
-    transform: translateY(-2px); /* Menor movimiento en hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px); /* Movimiento mínimo en hover */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .semestre-column h3 {
     color: #e91e63;
     margin-top: 0;
-    margin-bottom: 10px; /* Margen reducido */
-    font-size: 1.2em; /* Fuente más pequeña */
+    margin-bottom: 8px; /* Margen reducido */
+    font-size: 1.1em; /* Fuente más pequeña */
     border-bottom: 1px solid #f8bbd0;
-    padding-bottom: 5px;
+    padding-bottom: 4px;
 }
 
-/* Ramo Card Styles - MÁS COMPACTOS */
+/* Ramo Card Styles - MÁS COMPACTOS AÚN */
 .ramo-card {
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 5px; /* Borde más pequeño */
-    padding: 8px; /* ¡Padding mucho más reducido! */
-    margin-bottom: 8px; /* Margen reducido */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Sombra más sutil */
+    border-radius: 4px; /* Borde más pequeño */
+    padding: 6px; /* ¡Padding muy reducido! */
+    margin-bottom: 6px; /* Margen reducido */
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); /* Sombra muy sutil */
     cursor: pointer;
-    transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background-color 0.2s ease;
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out, background-color 0.2s ease;
     position: relative;
     overflow: hidden;
-    font-size: 0.85em; /* Fuente base para el ramo más pequeña */
+    font-size: 0.8em; /* Fuente base para el ramo más pequeña */
 }
 
 .ramo-card:last-child {
@@ -133,15 +132,15 @@ header h2 {
 }
 
 .ramo-card:hover {
-    transform: translateY(-1px); /* Menor movimiento en hover */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    transform: translateY(0px); /* Sin movimiento para ahorrar espacio vertical */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
 }
 
 .ramo-card.approved {
     background-color: #dcedc8;
     border-color: #aed581;
     color: #4a652a;
-    box-shadow: inset 0 0 5px rgba(0, 100, 0, 0.1); /* Sombra de aprobado más sutil */
+    box-shadow: inset 0 0 3px rgba(0, 100, 0, 0.1); /* Sombra de aprobado más sutil */
 }
 
 .ramo-card.locked {
@@ -149,26 +148,26 @@ header h2 {
     border-color: #ffb74d;
     color: #7d4e00;
     cursor: not-allowed;
-    opacity: 0.85; /* Opacidad ligeramente aumentada para visibilidad */
+    opacity: 0.9; /* Opacidad ligeramente aumentada para visibilidad */
 }
 
 .ramo-card h4 {
-    margin: 0 0 4px; /* Margen reducido */
-    font-size: 1em; /* Fuente más pequeña para el nombre */
+    margin: 0 0 3px; /* Margen reducido */
+    font-size: 0.9em; /* Fuente más pequeña para el nombre */
     color: #333;
 }
 
 .ramo-card p {
     margin: 0;
-    font-size: 0.75em; /* Fuente más pequeña para créditos */
+    font-size: 0.7em; /* Fuente más pequeña para créditos */
     color: #555;
 }
 
 .ramo-card .siglas {
     font-weight: bold;
     color: #e91e63;
-    font-size: 0.9em; /* Fuente más pequeña para siglas */
-    margin-bottom: 3px; /* Margen reducido */
+    font-size: 0.8em; /* Fuente más pequeña para siglas */
+    margin-bottom: 2px; /* Margen reducido */
     display: block;
 }
 
@@ -178,117 +177,119 @@ header h2 {
     top: 0;
     left: 0;
     width: 100%;
-    height: 4px; /* Barra más delgada */
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    height: 3px; /* Barra más delgada */
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
 
 /* Prerequisite ID Display */
 .prerequisite-ids {
     position: absolute;
-    bottom: 3px; /* Más cerca del borde */
-    right: 3px; /* Más cerca del borde */
+    bottom: 2px; /* Más cerca del borde */
+    right: 2px; /* Más cerca del borde */
     display: flex;
-    gap: 1px; /* Espaciado mínimo */
+    gap: 0px; /* Sin espacio entre badges */
     flex-wrap: wrap;
     z-index: 1;
 }
 
 .prerequisite-id-badge {
-    background-color: rgba(255, 255, 255, 0.85);
-    border: 1px solid #bbb; /* Borde más oscuro para visibilidad */
-    border-radius: 2px; /* Borde más pequeño */
-    padding: 0px 3px; /* Padding reducido al mínimo */
-    font-size: 0.55em; /* ¡Fuente muy pequeña para los badges! */
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #aaa; /* Borde más oscuro para visibilidad */
+    border-radius: 2px;
+    padding: 0px 2px; /* Padding muy reducido */
+    font-size: 0.5em; /* ¡Fuente extremadamente pequeña para los badges! */
     font-weight: bold;
-    color: #555;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    color: #444;
+    box-shadow: 0 0px 1px rgba(0,0,0,0.05);
+    line-height: 1; /* Asegura que el texto sea compacto */
 }
 
 /* Approved State Indicator (Checkmark) */
 .ramo-card.approved::after {
     content: '✔';
     position: absolute;
-    top: 5px; /* Posición ajustada */
-    right: 5px; /* Posición ajustada */
-    font-size: 1.5em; /* Tamaño más reducido */
+    top: 4px; /* Posición ajustada */
+    right: 4px; /* Posición ajustada */
+    font-size: 1.2em; /* Tamaño más reducido */
     color: #4CAF50;
-    opacity: 0.7;
+    opacity: 0.6;
 }
 
 /* Locked State Indicator (Lock icon) */
 .ramo-card.locked::before {
     content: '🔒';
     position: absolute;
-    top: 5px; /* Posición ajustada */
-    right: 5px; /* Posición ajustada */
-    font-size: 1.3em; /* Tamaño más reducido */
+    top: 4px; /* Posición ajustada */
+    right: 4px; /* Posición ajustada */
+    font-size: 1.1em; /* Tamaño más reducido */
     color: #ff9800;
-    opacity: 0.7;
+    opacity: 0.6;
 }
 
 /* Footer Styles */
 footer {
     text-align: center;
-    padding: 10px; /* Padding reducido */
-    margin-top: 20px;
+    padding: 8px; /* Padding reducido */
+    margin-top: 15px;
     background-color: #e91e63;
     color: white;
-    font-size: 0.75em; /* Fuente más pequeña */
-    box-shadow: 0 -1px 6px rgba(0, 0, 0, 0.2);
+    font-size: 0.7em; /* Fuente más pequeña */
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive Design - Ajustes críticos para que todo quepa */
-@media (min-width: 1700px) { /* Pantallas muy anchas, intentar 11 columnas */
+@media (min-width: 1920px) { /* Full HD o superior: intentar 11 columnas */
     #malla-container {
-        grid-template-columns: repeat(11, minmax(130px, 1fr)); /* Fuerza 11 columnas */
+        grid-template-columns: repeat(11, minmax(110px, 1fr)); /* Fuerza 11 columnas */
     }
 }
 
-@media (max-width: 1699px) and (min-width: 1400px) { /* Pantallas grandes */
+@media (max-width: 1919px) and (min-width: 1600px) { /* Pantallas muy grandes, pero no 11 */
     #malla-container {
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); /* Podrían ser 9-10 columnas */
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); /* 10 u 9 columnas */
     }
 }
 
-@media (max-width: 1399px) and (min-width: 1100px) { /* Laptops típicos */
+@media (max-width: 1599px) and (min-width: 1300px) { /* Pantallas grandes, típico laptop */
     #malla-container {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 7-8 columnas */
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* 8-9 columnas */
     }
 }
 
-@media (max-width: 1099px) and (min-width: 800px) { /* Tablets grandes o laptops pequeños */
+@media (max-width: 1299px) and (min-width: 1000px) { /* Laptops más pequeños */
     #malla-container {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* 5-6 columnas */
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* 6-7 columnas */
     }
 }
 
-@media (max-width: 799px) and (min-width: 600px) { /* Tablets pequeños */
+@media (max-width: 999px) and (min-width: 768px) { /* Tablets grandes o laptops muy pequeños */
     #malla-container {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* 3-4 columnas */
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* 4-5 columnas */
     }
 }
 
-@media (max-width: 599px) { /* Móviles */
+@media (max-width: 767px) { /* Tablets pequeños y móviles */
     #malla-container {
         grid-template-columns: 1fr; /* Una columna */
-        padding: 8px;
+        padding: 6px;
     }
     .semestre-column {
         width: 98%;
-        max-width: 300px; /* Más compacto en móviles */
-        margin: 0 auto 10px; /* Centrar y añadir margen inferior */
+        max-width: 280px; /* Más compacto en móviles */
+        margin: 0 auto 8px; /* Centrar y añadir margen inferior */
+        padding: 6px;
     }
-    header h1 { font-size: 1.5em; }
-    header h2 { font-size: 1em; }
-    .legend { font-size: 0.75em; padding: 5px 8px; }
-    .ramo-card { padding: 6px; font-size: 0.8em; }
-    .ramo-card h4 { font-size: 0.9em; }
-    .ramo-card p { font-size: 0.7em; }
-    .ramo-card .siglas { font-size: 0.8em; }
-    .prerequisite-id-badge { font-size: 0.5em; padding: 0 2px; }
+    header h1 { font-size: 1.4em; }
+    header h2 { font-size: 0.9em; }
+    .legend { font-size: 0.7em; padding: 4px 6px; }
+    .ramo-card { padding: 4px; font-size: 0.75em; }
+    .ramo-card h4 { font-size: 0.85em; }
+    .ramo-card p { font-size: 0.65em; }
+    .ramo-card .siglas { font-size: 0.75em; }
+    .prerequisite-id-badge { font-size: 0.45em; padding: 0 1px; }
     .ramo-card.approved::after, .ramo-card.locked::before {
-        font-size: 1.2em; top: 4px; right: 4px;
+        font-size: 1.1em; top: 3px; right: 3px;
     }
-    footer { font-size: 0.7em; padding: 8px; }
+    footer { font-size: 0.65em; padding: 6px; }
 }
