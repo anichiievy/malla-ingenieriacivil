@@ -48,7 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
         "26": {"id": "26", "siglas": "ICIV321", "nombre": "Mecánica de Suelos I", "creditos": 7, "prerequisitos": ["23"], "semestre": 6, "categoria": "Carrera (ICIV)"},
         "27": {"id": "27", "siglas": "ICIV322", "nombre": "Análisis Estructural", "creditos": 6, "prerequisitos": ["16", "17", "18", "23"], "semestre": 6, "categoria": "Carrera (ICIV)"},
         "28": {"id": "28", "siglas": "ICIV323", "nombre": "Hidráulica Teórica", "creditos": 7, "prerequisitos": ["24"], "semestre": 6, "categoria": "Carrera (ICIV)"},
-        "29": {"id": "29", "siglas": "ICIV324", "nombre": "Comunicación Efectiva para Liderazgo", "creditos": 3, "prerequisitos": ["3", "8"], "semestre": 6, "categoria": "Humanista"}, // Eliminar 30 si es Práctica Básica
+        // Mantenemos 30 como prerequisito si es correcto, si no lo puedes eliminar de la lista:
+        "29": {"id": "29", "siglas": "ICIV324", "nombre": "Comunicación Efectiva para Liderazgo", "creditos": 3, "prerequisitos": ["3", "8"], "semestre": 6, "categoria": "Humanista"},
         "30": {"id": "30", "siglas": "PRACB", "nombre": "Práctica Básica", "creditos": 0, "prerequisitos": [], "semestre": 6, "categoria": "Talleres/Prácticas"},
         "31": {"id": "31", "siglas": "ICIV325", "nombre": "Probabilidad y Estadística", "creditos": 5, "prerequisitos": ["16"], "semestre": 6, "categoria": "Matemáticas"},
         "32": {"id": "32", "siglas": "ICIV326", "nombre": "Inglés I", "creditos": 2, "prerequisitos": [], "semestre": 6, "categoria": "Humanista"},
@@ -85,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- FIN DE DATOS DE LA MALLA ---
 
     const mallaContainer = document.getElementById('malla-container');
-    let approvedRamos = new Set(); // Usamos un Set para un acceso más eficiente
+    let approvedRamos = new Set();
 
     // Función para guardar el estado de los ramos aprobados
     function saveState() {
@@ -106,10 +107,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!ramo) return false;
 
         if (ramo.prerequisitos.length === 0) {
-            return true; // No tiene prerequisitos, siempre desbloqueado
+            return true;
         }
 
-        // Todos los prerequisitos deben estar aprobados
         return ramo.prerequisitos.every(prereqId => approvedRamos.has(prereqId));
     }
 
@@ -122,12 +122,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (approvedRamos.has(ramo.id)) {
                 ramoElement.classList.add('approved');
                 ramoElement.classList.remove('locked');
+                ramoElement.style.pointerEvents = 'auto'; // Permitir hacer clic para desaprobar
             } else if (isRamoUnlocked(ramo.id)) {
                 ramoElement.classList.remove('locked');
                 ramoElement.classList.remove('approved');
+                ramoElement.style.pointerEvents = 'auto'; // Permitir hacer clic
             } else {
                 ramoElement.classList.add('locked');
                 ramoElement.classList.remove('approved');
+                ramoElement.style.pointerEvents = 'auto'; // Permitir hacer clic, pero con alerta
             }
         });
     }
@@ -138,24 +141,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const ramoId = ramoCard.dataset.ramoId;
 
         if (approvedRamos.has(ramoId)) {
-            // Si ya está aprobado, se puede desaprobar (toggle)
+            // Si ya está aprobado, se puede desaprobar
             approvedRamos.delete(ramoId);
+            saveState();
+            updateRamoStates();
         } else {
             // Si no está aprobado, intentar aprobar
             if (isRamoUnlocked(ramoId)) {
                 approvedRamos.add(ramoId);
+                saveState();
+                updateRamoStates();
             } else {
-                alert('No puedes aprobar este ramo, ¡primero debes aprobar sus prerequisitos!');
-                return; // No hagas nada si está bloqueado
+                // Si está bloqueado, mostrar alerta sin cambiar estado
+                alert('No puedes aprobar este ramo. Primero debes aprobar sus prerequisitos.');
             }
         }
-        saveState();
-        updateRamoStates(); // Re-renderiza todos los estados
     }
 
     // Función para renderizar la leyenda de categorías
     function renderCategoryLegend() {
         const legendContainer = document.getElementById('category-legend');
+        // Limpiar leyenda existente para evitar duplicados si se llama varias veces
+        legendContainer.innerHTML = '';
         for (const category in CATEGORIAS) {
             const color = CATEGORIAS[category];
             const legendItem = document.createElement('div');
@@ -178,24 +185,24 @@ document.addEventListener('DOMContentLoaded', () => {
             ramosBySemestre[ramo.semestre].push(ramo);
         });
 
-        // Ordenar los semestres
         const sortedSemestres = Object.keys(ramosBySemestre).sort((a, b) => parseInt(a) - parseInt(b));
+
+        // Limpiar el contenedor antes de generar
+        mallaContainer.innerHTML = '';
 
         sortedSemestres.forEach(semestre => {
             const semestreColumn = document.createElement('div');
             semestreColumn.classList.add('semestre-column');
             semestreColumn.innerHTML = `<h3>Semestre ${semestre}</h3>`;
 
-            // Ordenar los ramos dentro de cada semestre por ID (para consistencia)
             ramosBySemestre[semestre].sort((a, b) => parseInt(a.id) - parseInt(b.id));
 
             ramosBySemestre[semestre].forEach(ramo => {
                 const ramoCard = document.createElement('div');
                 ramoCard.classList.add('ramo-card');
                 ramoCard.dataset.ramoId = ramo.id;
-                ramoCard.id = `ramo-${ramo.id}`; // Asignar ID para fácil referencia
+                ramoCard.id = `ramo-${ramo.id}`;
 
-                // Barra de color de categoría
                 const categoryColorBar = document.createElement('div');
                 categoryColorBar.classList.add('category-color-bar');
                 categoryColorBar.style.backgroundColor = CATEGORIAS[ramo.categoria] || CATEGORIAS["Otros"];
@@ -207,13 +214,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p>Créditos: ${ramo.creditos}</p>
                 `;
 
-                // Mostrar prerequisitos como IDs pequeños
                 if (ramo.prerequisitos && ramo.prerequisitos.length > 0) {
                     const prereqContainer = document.createElement('div');
                     prereqContainer.classList.add('prerequisite-ids');
                     ramo.prerequisitos.forEach(prereqId => {
                         const prereqBadge = document.createElement('span');
                         prereqBadge.classList.add('prerequisite-id-badge');
+                        // Asegurarse de que el prereqId exista en RAMOS
                         prereqBadge.textContent = RAMOS[prereqId] ? RAMOS[prereqId].siglas : `ID:${prereqId}`;
                         prereqContainer.appendChild(prereqBadge);
                     });
@@ -226,12 +233,11 @@ document.addEventListener('DOMContentLoaded', () => {
             mallaContainer.appendChild(semestreColumn);
         });
 
-        // Cargar el estado guardado y actualizar los estados visuales después de renderizar
         loadState();
         updateRamoStates();
     }
 
     // Inicializar la aplicación
-    renderCategoryLegend(); // Renderiza la leyenda primero
-    generateMalla(); // Luego genera la malla
+    renderCategoryLegend();
+    generateMalla();
 });
