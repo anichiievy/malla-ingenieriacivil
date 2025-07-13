@@ -1,0 +1,435 @@
+/* static/style.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 10px; /* Menos padding general */
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box; /* Incluir padding y border en el tamaño total */
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px; /* Menos margen */
+    font-size: 1.8em; /* Título más pequeño */
+}
+
+/* Estilos para el encabezado superior de los años */
+.top-years-header {
+    display: grid;
+    /* Ajusta este grid-template-columns para que coincida con el de .malla-container
+       y que cada 'Año' abarque el número correcto de semestres.
+       Para 11 semestres, con 5 años de 2 semestres y un semestre final, usamos: */
+    grid-template-columns: repeat(11, 1fr);
+    width: 100%;
+    max-width: 100%; /* Para que se estire igual que la malla-container */
+    margin: 0 auto 5px auto; /* Espacio entre el header y los semestres */
+    gap: 8px; /* Mismo gap que entre los semestres para alineación */
+}
+
+.year-header-item {
+    background-color: #666; /* Gris oscuro para el fondo del año */
+    color: white;
+    padding: 8px 0;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 1.1em; /* Tamaño de fuente para el Año 1, Año 2... */
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Reglas para que los encabezados de año abarquen el ancho correcto */
+/* Basado en la estructura de tu malla (S1-S2: Año 1, S3-S4: Año 2, etc.) */
+.top-years-header .year-header-item:nth-child(1) { grid-column: span 2; } /* Primer Año (S1-S2) */
+.top-years-header .year-header-item:nth-child(2) { grid-column: span 2; } /* Segundo Año (S3-S4) */
+.top-years-header .year-header-item:nth-child(3) { grid-column: span 2; } /* Tercer Año (S5-S6) */
+.top-years-header .year-header-item:nth-child(4) { grid-column: span 2; } /* Cuarto Año (S7-S8) */
+.top-years-header .year-header-item:nth-child(5) { grid-column: span 2; } /* Quinto Año (S9-S10) */
+.top-years-header .year-header-item:nth-child(6) { grid-column: span 1; } /* Quinto Año y Medio (S11) */
+
+
+/* Contenedor principal de la malla para centrar y distribuir semestres */
+.malla-container {
+    display: grid;
+    /* Fuerza 11 columnas para que quepan todos los semestres */
+    grid-template-columns: repeat(11, 1fr);
+    gap: 8px; /* Espacio más pequeño entre semestres */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    max-width: 100%; /* No hay límite de ancho para forzar el encaje */
+    margin: 0 auto 20px auto;
+    overflow-x: hidden; /* Oculta el scroll horizontal */
+    flex-grow: 1; /* Permite que el contenedor crezca y ocupe espacio */
+    align-items: start; /* Alinea los semestres al inicio verticalmente */
+}
+
+.semestre {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px; /* Bordes más pequeños */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06); /* Sombra más sutil */
+    padding: 6px; /* Menos padding */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 6px; /* Espacio entre el header del semestre y los ramos */
+    min-width: 0; /* Permite que las columnas se reduzcan más allá de su contenido */
+}
+
+.semestre-header {
+    background-color: #666; /* Gris oscuro para el fondo */
+    color: white;
+    padding: 5px 0; /* Ajusta el padding para que sea más compacto */
+    border-radius: 4px; /* Bordes ligeramente más cuadrados */
+    margin-bottom: 3px;
+    font-size: 0.75em; /* Fuente un poco más pequeña */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Añade una pequeña sombra */
+}
+
+.semestre-header h2 {
+    margin: 0;
+    font-size: 0.9em; /* S.X más pequeño */
+}
+
+.semestre-header p {
+    margin: 1px 0 0; /* Reduce el margen */
+    font-size: 0.65em; /* "Primer Año" más pequeño */
+    opacity: 0.95; /* Ligeramente menos transparente */
+    font-weight: normal; /* Asegura que no sea muy negrita */
+}
+
+.ramos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px; /* Espacio más compacto entre ramos */
+}
+
+.ramo-card {
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    padding: 5px; /* Padding aún más pequeño */
+    padding-top: 25px; /* Añade padding-top para el .ramo-meta */
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 60px; /* Altura mínima para compactar */
+    font-size: 0.7em; /* Tamaño de fuente general más pequeño */
+    line-height: 1.1; /* Ajustar altura de línea */
+}
+
+.ramo-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+}
+
+/* Eliminado el .ramo-id original para usar el nuevo .ramo-id-circle */
+
+
+/* Contenedor para el ID y los mini-prerrequisitos */
+.ramo-meta {
+    position: absolute; /* Para posicionarlo en la esquina superior */
+    top: 3px;
+    left: 3px;
+    display: flex;
+    align-items: flex-start; /* Alinea los elementos en la parte superior */
+    gap: 3px; /* Espacio entre el círculo del ID y los cuadritos de prerrequisitos */
+    z-index: 2; /* Asegura que esté por encima de otros contenidos de la tarjeta */
+}
+
+/* Estilo para el ID del ramo en un círculo */
+.ramo-id-circle {
+    background-color: #555; /* Fondo gris oscuro */
+    color: white;
+    border-radius: 50%; /* Hace que sea un círculo */
+    width: 18px; /* Ancho del círculo */
+    height: 18px; /* Alto del círculo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7em; /* Tamaño de fuente para el ID */
+    font-weight: bold;
+    line-height: 1; /* Ajusta la altura de línea para centrar el texto */
+    padding-top: 1px; /* Pequeño ajuste vertical si el número no está perfectamente centrado */
+}
+
+/* Contenedor para los pequeños cuadros de prerrequisitos */
+.ramo-mini-prereqs {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los cuadros se envuelvan si hay muchos */
+    gap: 2px; /* Espacio entre los cuadritos de prerrequisitos */
+    max-width: 60px; /* Limita el ancho para que no se extienda demasiado */
+}
+
+/* Estilo para cada cuadrito de prerrequisito */
+.mini-prereq-box {
+    background-color: #ddd; /* Fondo gris claro */
+    color: #333;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    padding: 1px 3px; /* Pequeño padding */
+    font-size: 0.6em; /* Tamaño de fuente muy pequeño */
+    line-height: 1;
+    white-space: nowrap; /* Evita que el texto se rompa */
+}
+
+
+/* Elementos internos de la tarjeta del ramo */
+.ramo-siglas {
+    font-size: 0.75em; /* Siglas más pequeñas */
+    font-weight: bold;
+    margin-bottom: 2px;
+    color: #007bff;
+    text-transform: uppercase;
+}
+
+.ramo-nombre {
+    font-size: 0.8em; /* Nombre del ramo ligeramente más pequeño */
+    font-weight: bold;
+    margin: 0 0 2px 0;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.1;
+    overflow: hidden; /* Oculta texto que se desborda */
+    text-overflow: ellipsis; /* Añade puntos suspensivos */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limita a 3 líneas */
+    -webkit-box-orient: vertical;
+    line-clamp: 3; /* Versión estándar */
+}
+
+.ramo-creditos {
+    font-size: 0.65em; /* Créditos más pequeños */
+    color: #666;
+    margin-top: 2px;
+}
+
+.ramo-prerequisitos {
+    font-size: 0.6em; /* Prerrequisitos aún más pequeños */
+    color: #999;
+    margin-top: 3px;
+    padding-top: 3px;
+    border-top: 1px dashed rgba(0,0,0,0.06);
+    width: 100%;
+}
+
+/* Estilos para la cruz de aprobado */
+.ramo-check {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2em; /* Cruz un poco más pequeña */
+    color: #28a745;
+    display: none;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+}
+
+.ramo-card.aprobado .ramo-check {
+    display: block;
+}
+
+/* Estado de los ramos */
+.ramo-card.aprobado {
+    border-color: #28a745;
+    background-color: #e6ffe6 !important;
+    opacity: 0.8;
+}
+
+.ramo-card.deshabilitado {
+    opacity: 0.3; /* Más opaco para deshabilitado */
+    cursor: not-allowed;
+    border-style: dashed;
+}
+
+.ramo-card.habilitado {
+    border: 2px solid #007bff;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+    cursor: pointer;
+    opacity: 1;
+}
+
+/* Leyenda de colores */
+.leyenda {
+    margin-top: 20px; /* Menos margen */
+    padding: 10px; /* Menos padding */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 15px; /* Espacio más compacto */
+    font-size: 0.8em; /* Leyenda más pequeña */
+}
+
+.leyenda h3 {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-size: 1.2em; /* Título de leyenda más pequeño */
+}
+
+.leyenda-item {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.8em; /* Texto de leyenda más pequeño */
+}
+
+.leyenda-color {
+    width: 15px; /* Cuadrito de color más pequeño */
+    height: 15px;
+    border-radius: 3px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Media Queries para pantallas más pequeñas (opcional, pero mejora la responsividad) */
+@media (max-width: 1200px) { /* Ajuste para pantallas más pequeñas */
+    .malla-container, .top-years-header {
+        grid-template-columns: repeat(11, 1fr); /* Mantener 11 columnas, se harán más estrechas */
+        gap: 6px;
+    }
+    .ramo-card {
+        min-height: 55px;
+        font-size: 0.65em;
+        padding: 4px;
+        padding-top: 22px; /* Ajuste para el .ramo-meta */
+    }
+    .ramo-nombre {
+        -webkit-line-clamp: 2; /* Limitar a 2 líneas si es necesario */
+        line-clamp: 2;
+    }
+    .ramo-check {
+        font-size: 1.8em;
+    }
+    .leyenda {
+        font-size: 0.75em;
+    }
+    .ramo-id-circle {
+        width: 16px;
+        height: 16px;
+        font-size: 0.65em;
+    }
+    .mini-prereq-box {
+        font-size: 0.55em;
+        padding: 1px 2px;
+    }
+}
+
+@media (max-width: 992px) { /* Tabletas en vertical */
+    .malla-container, .top-years-header {
+        grid-template-columns: repeat(6, 1fr); /* Reducir a 6 columnas para mejor legibilidad */
+    }
+    /* Ajuste de span para los años superiores si el grid cambia */
+    .top-years-header .year-header-item:nth-child(1) { grid-column: span 1; }
+    .top-years-header .year-header-item:nth-child(2) { grid-column: span 1; }
+    .top-years-header .year-header-item:nth-child(3) { grid-column: span 1; }
+    .top-years-header .year-header-item:nth-child(4) { grid-column: span 1; }
+    .top-years-header .year-header-item:nth-child(5) { grid-column: span 1; }
+    .top-years-header .year-header-item:nth-child(6) { grid-column: span 1; }
+
+
+    h1 {
+        font-size: 1.6em;
+    }
+    .semestre-header {
+        font-size: 0.7em;
+    }
+    .ramo-card {
+        min-height: 70px; /* Aumentar un poco la altura al reducir columnas */
+        font-size: 0.8em;
+        padding-top: 25px; /* Mantiene el padding para el meta */
+    }
+    .ramo-id-circle {
+        width: 18px;
+        height: 18px;
+        font-size: 0.7em;
+    }
+    .mini-prereq-box {
+        font-size: 0.6em;
+        padding: 1px 3px;
+    }
+}
+
+@media (max-width: 768px) { /* Teléfonos grandes */
+    .malla-container, .top-years-header {
+        grid-template-columns: repeat(4, 1fr); /* Reducir a 4 columnas */
+    }
+    h1 {
+        font-size: 1.4em;
+    }
+    .ramo-card {
+        min-height: 80px;
+        font-size: 0.85em;
+        padding-top: 28px; /* Ajuste para el meta en cards más altas */
+    }
+    .leyenda {
+        font-size: 0.7em;
+    }
+}
+
+@media (max-width: 480px) { /* Teléfonos pequeños */
+    .malla-container, .top-years-header {
+        grid-template-columns: repeat(3, 1fr); /* Reducir a 3 columnas */
+        gap: 5px;
+    }
+    body {
+        padding: 5px;
+    }
+    h1 {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+    }
+    .semestre {
+        padding: 4px;
+        gap: 4px;
+    }
+    .semestre-header {
+        padding: 4px 0;
+    }
+    .ramo-card {
+        min-height: 90px;
+        font-size: 0.9em;
+        padding: 3px;
+        padding-top: 30px; /* Ajuste para el meta en cards más altas */
+    }
+    .ramo-nombre {
+        -webkit-line-clamp: unset; /* Permitir que ocupe más líneas si es necesario */
+        line-clamp: unset;
+    }
+    .ramo-check {
+        font-size: 1.5em;
+    }
+    .leyenda {
+        gap: 8px 10px;
+    }
+    .ramo-id-circle {
+        width: 14px;
+        height: 14px;
+        font-size: 0.6em;
+    }
+    .mini-prereq-box {
+        font-size: 0.5em;
+        padding: 0 1px;
+    }
+}
