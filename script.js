@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "Gestión": "#147735",
         "Acero": "#7D090A",
         "Sanitario": "#102AAA",
-        "Talleres/Prácticas": "#FFB3D9"
+        "Talleres/Prácticas": "#FFB3D9",
     };
 
     // Datos completos de la malla curricular
