@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "Vialidad": "#505050",
         "Gestión": "#147735",
         "Acero": "#7D090A",
-        "Sanitario": ##102AAA",
+        "Sanitario": "#102AAA",
         "Talleres/Prácticas": "#FFB3D9"
     };
 
