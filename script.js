@@ -2,86 +2,89 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- INICIO DE DATOS DE LA MALLA ---
     // Definición de categorías y sus colores (¡usaremos estos colores para la leyenda y las barras de ramo!)
     const CATEGORIAS = {
-        "Plan Común": "#B3E0FF",     // Azul claro
-        "Matemáticas": "#B3FFB3",    // Verde claro
-        "Humanista": "#FFFFB3",      // Amarillo claro
-        "Programación": "#FFD9B3",   // Naranja claro
-        "Química": "#E6B3FF",        // Morado claro
-        "Carrera (ICIV)": "#D9D9D9", // Gris claro
-        "Física": "#B3FFFF",         // Cian claro
-        "Talleres/Prácticas": "#FFB3D9", // Rosa claro
-        "Otros": "#FFFFFF"           // Blanco
+        "Plan Común": "#D8D8D8",
+        "Humanista": "#BDFFBE",
+        "Fundamentos de la Ingenieria": "#FAFFAF",
+        "Estructura": "#FFA571",
+        "Hidraulica": "#92F8FB",
+        "Suelo": "#5E3B10",
+        "Vialidad": "#505050",
+        "Gestión": "#147735",
+        "Acero": "#7D090A",
+        "Sanitario": ##102AAA",
+        "Talleres/Prácticas": "#FFB3D9"
     };
 
     // Datos completos de la malla curricular
     const RAMOS = {
-        "1": {"id": "1", "siglas": "MAT111", "nombre": "Fundamentos de Matemática", "creditos": 8, "prerequisitos": [], "semestre": 1, "categoria": "Matemáticas"},
-        "2": {"id": "2", "siglas": "CFG111", "nombre": "Desafíos de Ingeniería", "creditos": 6, "prerequisitos": [], "semestre": 1, "categoria": "Humanista"},
+        "1": {"id": "1", "siglas": "MAT111", "nombre": "Fundamentos de Matemática", "creditos": 8, "prerequisitos": [], "semestre": 1, "categoria": "Plan Común"},
+        "2": {"id": "2", "siglas": "CFG111", "nombre": "Desafíos de Ingeniería", "creditos": 6, "prerequisitos": [], "semestre": 1, "categoria": "Fundamentos de la Ingenieria"},
         "3": {"id": "3", "siglas": "ING111", "nombre": "Desarrollo Personal", "creditos": 5, "prerequisitos": [], "semestre": 1, "categoria": "Humanista"},
-        "4": {"id": "4", "siglas": "PRO111", "nombre": "Fundamentos de Programación", "creditos": 5, "prerequisitos": [], "semestre": 1, "categoria": "Programación"},
-        "5": {"id": "5", "siglas": "FIS111", "nombre": "Fundamentos de Física", "creditos": 6, "prerequisitos": [], "semestre": 1, "categoria": "Física"},
+        "4": {"id": "4", "siglas": "PRO111", "nombre": "Fundamentos de Programación", "creditos": 5, "prerequisitos": [], "semestre": 1, "categoria": "Plan Común"},
+        "5": {"id": "5", "siglas": "FIS111", "nombre": "Fundamentos de Física", "creditos": 6, "prerequisitos": [], "semestre": 1, "categoria": "Plan Común"},
 
-        "6": {"id": "6", "siglas": "MAT121", "nombre": "Cálculo Diferencial", "creditos": 6, "prerequisitos": ["1"], "semestre": 2, "categoria": "Matemáticas"},
-        "7": {"id": "7", "siglas": "MAT122", "nombre": "Álgebra", "creditos": 8, "prerequisitos": ["1"], "semestre": 2, "categoria": "Matemáticas"},
+        "6": {"id": "6", "siglas": "MAT121", "nombre": "Cálculo Diferencial", "creditos": 6, "prerequisitos": ["1"], "semestre": 2, "categoria": "Plan Común"},
+        "7": {"id": "7", "siglas": "MAT122", "nombre": "Álgebra", "creditos": 8, "prerequisitos": ["1"], "semestre": 2, "categoria": "Plan Común"},
         "8": {"id": "8", "siglas": "ING121", "nombre": "Ingeniería, Innovación y Emprendimiento", "creditos": 6, "prerequisitos": ["3"], "semestre": 2, "categoria": "Humanista"},
-        "9": {"id": "9", "siglas": "PRO121", "nombre": "Programación", "creditos": 5, "prerequisitos": ["4"], "semestre": 2, "categoria": "Programación"},
-        "10": {"id": "10", "siglas": "QUI121", "nombre": "Química para Ingeniería", "creditos": 5, "prerequisitos": [], "semestre": 2, "categoria": "Química"},
+        "9": {"id": "9", "siglas": "PRO121", "nombre": "Programación", "creditos": 5, "prerequisitos": ["4"], "semestre": 2, "categoria": "Plan Común"},
+        "10": {"id": "10", "siglas": "QUI121", "nombre": "Química para Ingeniería", "creditos": 5, "prerequisitos": [], "semestre": 2, "categoria": "Plan Común"},
 
-        "11": {"id": "11", "siglas": "MAT211", "nombre": "Cálculo Integral y Series", "creditos": 6, "prerequisitos": ["6"], "semestre": 3, "categoria": "Matemáticas"},
-        "12": {"id": "12", "siglas": "MAT212", "nombre": "Álgebra Lineal", "creditos": 6, "prerequisitos": ["7"], "semestre": 3, "categoria": "Matemáticas"},
-        "13": {"id": "13", "siglas": "ICIV211", "nombre": "Dibujo en Ingeniería y Topografía", "creditos": 6, "prerequisitos": [], "semestre": 3, "categoria": "Carrera (ICIV)"},
-        "14": {"id": "14", "siglas": "ICIV212", "nombre": "Materiales para Ingeniería Civil", "creditos": 5, "prerequisitos": ["10"], "semestre": 3, "categoria": "Carrera (ICIV)"},
-        "15": {"id": "15", "siglas": "FIS211", "nombre": "Física Mecánica", "creditos": 6, "prerequisitos": ["5", "6"], "semestre": 3, "categoria": "Física"},
+        "11": {"id": "11", "siglas": "MAT211", "nombre": "Cálculo Integral y Series", "creditos": 6, "prerequisitos": ["6"], "semestre": 3, "categoria": "Plan Común"},
+        "12": {"id": "12", "siglas": "MAT212", "nombre": "Álgebra Lineal", "creditos": 6, "prerequisitos": ["7"], "semestre": 3, "categoria": "Plan Común"},
+        "13": {"id": "13", "siglas": "ICIV211", "nombre": "Dibujo en Ingeniería y Topografía", "creditos": 6, "prerequisitos": ["9"], "semestre": 3, "categoria": "Fundamentos de la Ingenieria"},
+        "14": {"id": "14", "siglas": "ICIV212", "nombre": "Materiales para Ingeniería Civil", "creditos": 5, "prerequisitos": ["10", "3"], "semestre": 3, "categoria": "Fundamentos de la Ingenieria"},
+        "15": {"id": "15", "siglas": "FIS211", "nombre": "Física Mecánica", "creditos": 6, "prerequisitos": ["5", "1"], "semestre": 3, "categoria": "Plan Común"},
 
-        "16": {"id": "16", "siglas": "MAT221", "nombre": "Cálculo en varias variables", "creditos": 6, "prerequisitos": ["11"], "semestre": 4, "categoria": "Matemáticas"},
-        "17": {"id": "17", "siglas": "MAT222", "nombre": "Ecuaciones Diferenciales Ordinarias", "creditos": 6, "prerequisitos": ["11"], "semestre": 4, "categoria": "Matemáticas"},
-        "18": {"id": "18", "siglas": "ICIV221", "nombre": "Estática de Estructuras", "creditos": 7, "prerequisitos": ["12", "15"], "semestre": 4, "categoria": "Carrera (ICIV)"},
-        "19": {"id": "19", "siglas": "ECO101", "nombre": "Economía", "creditos": 5, "prerequisitos": [], "semestre": 4, "categoria": "Humanista"},
-        "20": {"id": "20", "siglas": "FIS221", "nombre": "Física Calor y Ondas", "creditos": 6, "prerequisitos": ["11", "15"], "semestre": 4, "categoria": "Física"},
+        "16": {"id": "16", "siglas": "MAT221", "nombre": "Cálculo en varias variables", "creditos": 6, "prerequisitos": ["11", "12"], "semestre": 4, "categoria": "Plan Común"},
+        "17": {"id": "17", "siglas": "MAT222", "nombre": "Ecuaciones Diferenciales Ordinarias", "creditos": 6, "prerequisitos": ["11", "12"], "semestre": 4, "categoria": "Plan Común"},
+        "18": {"id": "18", "siglas": "ICIV221", "nombre": "Estática de Estructuras", "creditos": 7, "prerequisitos": ["6", "13", "15"], "semestre": 4, "categoria": "Estructura"},
+        "19": {"id": "19", "siglas": "ECO101", "nombre": "Economía", "creditos": 5, "prerequisitos": ["6"], "semestre": 4, "categoria": "Gestión"},
+        "20": {"id": "20", "siglas": "FIS221", "nombre": "Física Calor y Ondas", "creditos": 6, "prerequisitos": ["11", "15"], "semestre": 4, "categoria": "Plan Común"},
 
-        "21": {"id": "21", "siglas": "ICIV311", "nombre": "Cálculo Avanzado", "creditos": 6, "prerequisitos": ["16"], "semestre": 5, "categoria": "Matemáticas"},
-        "22": {"id": "22", "siglas": "ICIV312", "nombre": "Métodos Numéricos", "creditos": 5, "prerequisitos": ["17"], "semestre": 5, "categoria": "Matemáticas"},
-        "23": {"id": "23", "siglas": "ICIV313", "nombre": "Mecánica de Sólidos", "creditos": 6, "prerequisitos": ["18"], "semestre": 5, "categoria": "Carrera (ICIV)"},
-        "24": {"id": "24", "siglas": "ICIV314", "nombre": "Mecánica de Fluidos", "creditos": 7, "prerequisitos": ["20"], "semestre": 5, "categoria": "Carrera (ICIV)"},
-        "25": {"id": "25", "siglas": "FIS311", "nombre": "Electromagnetismo", "creditos": 6, "prerequisitos": ["11", "20"], "semestre": 5, "categoria": "Física"},
+        "21": {"id": "21", "siglas": "ICIV311", "nombre": "Cálculo Avanzado", "creditos": 6, "prerequisitos": ["16", "17"], "semestre": 5, "categoria": "Plan Común"},
+        "22": {"id": "22", "siglas": "ICIV312", "nombre": "Métodos Numéricos", "creditos": 5, "prerequisitos": ["16", "17"], "semestre": 5, "categoria": "Plan Común"},
+        "23": {"id": "23", "siglas": "ICIV313", "nombre": "Mecánica de Sólidos", "creditos": 6, "prerequisitos": ["11", "18"], "semestre": 5, "categoria": "Estructura"},
+        "24": {"id": "24", "siglas": "ICIV314", "nombre": "Mecánica de Fluidos", "creditos": 7, "prerequisitos": ["16", "20"], "semestre": 5, "categoria": "Hidraulica"},
+        "25": {"id": "25", "siglas": "FIS311", "nombre": "Electromagnetismo", "creditos": 6, "prerequisitos": ["15", "11"], "semestre": 5, "categoria": "Plan Común"},
+        "26": {"id": "26", "siglas": "PRACB", "nombre": "Práctica Básica", "creditos": 0, "prerequisitos": [], "semestre": 5, "categoria": "Talleres/Prácticas"},
 
-        "26": {"id": "26", "siglas": "ICIV321", "nombre": "Mecánica de Suelos I", "creditos": 7, "prerequisitos": ["23"], "semestre": 6, "categoria": "Carrera (ICIV)"},
-        "27": {"id": "27", "siglas": "ICIV322", "nombre": "Análisis Estructural", "creditos": 6, "prerequisitos": ["16", "17", "18", "23"], "semestre": 6, "categoria": "Carrera (ICIV)"},
-        "28": {"id": "28", "siglas": "ICIV323", "nombre": "Hidráulica Teórica", "creditos": 7, "prerequisitos": ["24"], "semestre": 6, "categoria": "Carrera (ICIV)"},
-        // Mantenemos 30 como prerequisito si es correcto, si no lo puedes eliminar de la lista:
-        "29": {"id": "29", "siglas": "ICIV324", "nombre": "Comunicación Efectiva para Liderazgo", "creditos": 3, "prerequisitos": ["3", "8"], "semestre": 6, "categoria": "Humanista"},
-        "30": {"id": "30", "siglas": "PRACB", "nombre": "Práctica Básica", "creditos": 0, "prerequisitos": [], "semestre": 6, "categoria": "Talleres/Prácticas"},
-        "31": {"id": "31", "siglas": "ICIV325", "nombre": "Probabilidad y Estadística", "creditos": 5, "prerequisitos": ["16"], "semestre": 6, "categoria": "Matemáticas"},
+        "27": {"id": "27", "siglas": "ICIV321", "nombre": "Mecánica de Suelos I", "creditos": 7, "prerequisitos": ["23"], "semestre": 6, "categoria": "Suelo"},
+        "28": {"id": "28", "siglas": "ICIV322", "nombre": "Análisis Estructural", "creditos": 6, "prerequisitos": ["16", "17", "23"], "semestre": 6, "categoria": "Estructura"},
+        "29": {"id": "29", "siglas": "ICIV323", "nombre": "Hidráulica Teórica", "creditos": 7, "prerequisitos": ["22", "24"], "semestre": 6, "categoria": "Hidraulica"},
+        "30": {"id": "30", "siglas": "ICIV324", "nombre": "Comunicación Efectiva para Liderazgo", "creditos": 3, "prerequisitos": ["2", "8", "26"], "semestre": 6, "categoria": "Humanista"},
+        "31": {"id": "31", "siglas": "ICIV325", "nombre": "Probabilidad y Estadística", "creditos": 5, "prerequisitos": ["16"], "semestre": 6, "categoria": "Fundamentos de la Ingenieria"},
         "32": {"id": "32", "siglas": "ICIV326", "nombre": "Inglés I", "creditos": 2, "prerequisitos": [], "semestre": 6, "categoria": "Humanista"},
 
-        "33": {"id": "33", "siglas": "ICIV411", "nombre": "Sistemas y Procesos Constructivos", "creditos": 4, "prerequisitos": ["23", "30"], "semestre": 7, "categoria": "Carrera (ICIV)"},
-        "34": {"id": "34", "siglas": "ICIV412", "nombre": "Mecánica de Suelos II", "creditos": 6, "prerequisitos": ["26"], "semestre": 7, "categoria": "Carrera (ICIV)"},
-        "35": {"id": "35", "siglas": "ICIV413", "nombre": "Dinámica de Estructuras", "creditos": 6, "prerequisitos": ["27"], "semestre": 7, "categoria": "Carrera (ICIV)"},
-        "36": {"id": "36", "siglas": "ICIV414", "nombre": "Hidrología para Ingeniería Civil", "creditos": 6, "prerequisitos": ["24", "31"], "semestre": 7, "categoria": "Carrera (ICIV)"},
-        "37": {"id": "37", "siglas": "ICIV415", "nombre": "Infraestructura y Sistemas de Transporte", "creditos": 5, "prerequisitos": ["13", "26"], "semestre": 7, "categoria": "Carrera (ICIV)"},
+        "33": {"id": "33", "siglas": "ICIV411", "nombre": "Sistemas y Procesos Constructivos", "creditos": 4, "prerequisitos": ["23", "26"], "semestre": 7, "categoria": "Estructura"},
+        "34": {"id": "34", "siglas": "ICIV412", "nombre": "Mecánica de Suelos II", "creditos": 6, "prerequisitos": ["27"], "semestre": 7, "categoria": "Suelo"},
+        "35": {"id": "35", "siglas": "ICIV413", "nombre": "Dinámica de Estructuras", "creditos": 6, "prerequisitos": ["21", "22", "28"], "semestre": 7, "categoria": "Estructura"},
+        "36": {"id": "36", "siglas": "ICIV414", "nombre": "Hidrología para Ingeniería Civil", "creditos": 6, "prerequisitos": ["24", "31"], "semestre": 7, "categoria": "Hidraulica"},
+        "37": {"id": "37", "siglas": "ICIV415", "nombre": "Infraestructura y Sistemas de Transporte", "creditos": 5, "prerequisitos": ["19", "23"], "semestre": 7, "categoria": "Vialidad"},
+        "38": {"id": "38", "siglas": "ICIV416", "nombre": "TIPE I", "creditos": 3, "prerequisitos": [], "semestre": 7, "categoria": "Humanista"},
 
-        "38": {"id": "38", "siglas": "ICIV421", "nombre": "Diseño en Hormigón Armado", "creditos": 6, "prerequisitos": ["27", "33"], "semestre": 8, "categoria": "Carrera (ICIV)"},
-        "39": {"id": "39", "siglas": "ICIV422", "nombre": "Diseño en Acero", "creditos": 6, "prerequisitos": ["27", "33"], "semestre": 8, "categoria": "Carrera (ICIV)"},
-        "40": {"id": "40", "siglas": "ICIV423", "nombre": "Sistemas de Contención y Fundaciones", "creditos": 5, "prerequisitos": ["33", "34"], "semestre": 8, "categoria": "Carrera (ICIV)"},
-        "41": {"id": "41", "siglas": "ICIV424", "nombre": "Hidráulica Aplicada", "creditos": 6, "prerequisitos": ["28", "36"], "semestre": 8, "categoria": "Carrera (ICIV)"},
-        "42": {"id": "42", "siglas": "ICIV425", "nombre": "Diseño de Obras Marítimas", "creditos": 5, "prerequisitos": ["24", "28", "35"], "semestre": 8, "categoria": "Carrera (ICIV)"},
-        "43": {"id": "43", "siglas": "ICIV426", "nombre": "Inglés II", "creditos": 2, "prerequisitos": ["32"], "semestre": 8, "categoria": "Humanista"},
+        "39": {"id": "39", "siglas": "ICIV421", "nombre": "Diseño en Hormigón Armado", "creditos": 6, "prerequisitos": ["28", "33"], "semestre": 8, "categoria": "Estructura"},
+        "40": {"id": "40", "siglas": "ICIV422", "nombre": "Diseño en Acero", "creditos": 6, "prerequisitos": ["28", "33"], "semestre": 8, "categoria": "Acero"},
+        "41": {"id": "41", "siglas": "ICIV423", "nombre": "Sistemas de Contención y Fundaciones", "creditos": 5, "prerequisitos": ["33", "34"], "semestre": 8, "categoria": "Estructura"},
+        "42": {"id": "42", "siglas": "ICIV424", "nombre": "Hidráulica Aplicada", "creditos": 6, "prerequisitos": ["21", "29", "36"], "semestre": 8, "categoria": "Hidraulica"},
+        "43": {"id": "43", "siglas": "ICIV425", "nombre": "Diseño de Obras Marítimas", "creditos": 5, "prerequisitos": ["24", "34", "35"], "semestre": 8, "categoria": "Hidraulica"},
+        "44": {"id": "44", "siglas": "ICIV426", "nombre": "Inglés II", "creditos": 2, "prerequisitos": ["32"], "semestre": 8, "categoria": "Humanista"},
 
-        "44": {"id": "44", "siglas": "ICIV511", "nombre": "Ingeniería Sanitaria y PTA", "creditos": 6, "prerequisitos": ["41"], "semestre": 9, "categoria": "Carrera (ICIV)"},
-        "45": {"id": "45", "siglas": "ICIV512", "nombre": "Máquinas y Sistemas Hidráulicos", "creditos": 6, "prerequisitos": ["28", "36"], "semestre": 9, "categoria": "Carrera (ICIV)"},
-        "46": {"id": "46", "siglas": "ICIV513", "nombre": "Ingeniería Vial", "creditos": 5, "prerequisitos": ["33", "37"], "semestre": 9, "categoria": "Carrera (ICIV)"},
-        "47": {"id": "47", "siglas": "ICIV514", "nombre": "Ingeniería Sísmica", "creditos": 5, "prerequisitos": ["35", "38"], "semestre": 9, "categoria": "Carrera (ICIV)"},
-        "48": {"id": "48", "siglas": "ICIV515", "nombre": "Gestión y Evaluación de Proyectos", "creditos": 5, "prerequisitos": ["33"], "semestre": 9, "categoria": "Carrera (ICIV)"},
+        "45": {"id": "45", "siglas": "ICIV511", "nombre": "Ingeniería Sanitaria y PTA", "creditos": 6, "prerequisitos": ["42"], "semestre": 9, "categoria": "Sanitario"},
+        "46": {"id": "46", "siglas": "ICIV512", "nombre": "Máquinas y Sistemas Hidráulicos", "creditos": 6, "prerequisitos": ["29", "36"], "semestre": 9, "categoria": "Hidraulica"},
+        "47": {"id": "47", "siglas": "ICIV513", "nombre": "Ingeniería Vial", "creditos": 5, "prerequisitos": ["33", "37"], "semestre": 9, "categoria": "Vialidad"},
+        "48": {"id": "48", "siglas": "ICIV514", "nombre": "Ingeniería Sísmica", "creditos": 5, "prerequisitos": ["35", "39", "40"], "semestre": 9, "categoria": "Estructura"},
+        "49": {"id": "49", "siglas": "ICIV515", "nombre": "Gestión y Evaluación de Proyectos", "creditos": 5, "prerequisitos": ["30", "33"], "semestre": 9, "categoria": "Gestión"},
+        "50": {"id": "50", "siglas": "ICIV4516", "nombre": "TIPE II", "creditos": 3, "prerequisitos": ["38"], "semestre": 9, "categoria": "Humanista"},
 
-        "49": {"id": "49", "siglas": "ICIV521", "nombre": "Proyecto Hidráulico", "creditos": 4, "prerequisitos": ["44", "45"], "semestre": 10, "categoria": "Carrera (ICIV)"},
-        "50": {"id": "50", "siglas": "ICIV522", "nombre": "Proyecto Vial", "creditos": 4, "prerequisitos": ["46"], "semestre": 10, "categoria": "Carrera (ICIV)"},
-        "51": {"id": "51", "siglas": "ICIV523", "nombre": "Proyecto Estructural", "creditos": 4, "prerequisitos": ["40", "47"], "semestre": 10, "categoria": "Carrera (ICIV)"},
-        "52": {"id": "52", "siglas": "ICIV524", "nombre": "Evaluación Ambiental de Proyectos", "creditos": 4, "prerequisitos": [], "semestre": 10, "categoria": "Carrera (ICIV)"},
-        "53": {"id": "53", "siglas": "TETI1", "nombre": "Taller de Título I", "creditos": 12, "prerequisitos": ["49", "50", "51"], "semestre": 10, "categoria": "Talleres/Prácticas"},
+        "51": {"id": "51", "siglas": "ICIV521", "nombre": "Proyecto Hidráulico", "creditos": 4, "prerequisitos": ["45", "46", "49"], "semestre": 10, "categoria": "Hidraulica"},
+        "52": {"id": "52", "siglas": "ICIV522", "nombre": "Proyecto Vial", "creditos": 4, "prerequisitos": ["47", "49"], "semestre": 10, "categoria": "Vialidad"},
+        "53": {"id": "53", "siglas": "ICIV523", "nombre": "Proyecto Estructural", "creditos": 4, "prerequisitos": ["41", "48"], "semestre": 10, "categoria": "Estructura"},
+        "54": {"id": "54", "siglas": "ICIV524", "nombre": "Evaluación Ambiental de Proyectos", "creditos": 4, "prerequisitos": ["33", "49"], "semestre": 10, "categoria": "Sanitario"},
+        "55": {"id": "55", "siglas": "ICIV525", "nombre": "Taller de Título I", "creditos": 12, "prerequisitos": ["46", "47", "48"], "semestre": 10, "categoria": "Talleres/Prácticas"},
+        "56": {"id": "56", "siglas": "ICIV526", "nombre": "Inglés III", "creditos": 2, "prerequisitos": ["44"], "semestre": 10, "categoria": "Humanista"},
 
-        "54": {"id": "54", "siglas": "ICIV526", "nombre": "Inglés III", "creditos": 2, "prerequisitos": ["43"], "semestre": 11, "categoria": "Humanista"},
-        "55": {"id": "55", "siglas": "TETI2", "nombre": "Taller de Título II", "creditos": 30, "prerequisitos": ["53"], "semestre": 11, "categoria": "Talleres/Prácticas"},
-        "56": {"id": "56", "siglas": "PRAPRO", "nombre": "Práctica Profesional", "creditos": 0, "prerequisitos": [], "semestre": 11, "categoria": "Talleres/Prácticas"},
+        "57": {"id": "57", "siglas": "ICIV611", "nombre": "Taller de Título II", "creditos": 30, "prerequisitos": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56"], "semestre": 11, "categoria": "Talleres/Prácticas"},
+        "58": {"id": "58", "siglas": "PRAPRO", "nombre": "Práctica Profesional", "creditos": 0, "prerequisitos": [], "semestre": 11, "categoria": "Talleres/Prácticas"},
     };
     // --- FIN DE DATOS DE LA MALLA ---
 
