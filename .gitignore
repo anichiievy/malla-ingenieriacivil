@@ -1,0 +1,23 @@
+# Entorno virtual de Python
+venv/
+.venv/
+env/
+
+# Archivos de caché de Python
+__pycache__/
+*.pyc
+
+# Archivos de caché de VS Code (si usas VS Code)
+.vscode/
+
+# Archivos de depuración de Flask
+*.log
+.flaskenv
+
+# Archivos específicos de sistema operativo
+.DS_Store # macOS
+Thumbs.db # Windows
+
+# Archivos específicos de Ngrok (si lo usaste)
+ngrok
+ngrok.exe
