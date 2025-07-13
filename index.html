@@ -3,89 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malla Curricular Interactiva</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Malla Curricular - Ingeniería Civil</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Malla de Ingeniería Civil UV </h1>
+    <header>
+        <h1>Malla Curricular</h1>
+        <h2>Ingeniería Civil</h2>
+        <div class="legend">
+            <h3>Leyenda de Categorías:</h3>
+            <div id="category-legend"></div>
+        </div>
+    </header>
 
-    {# NUEVO CONTENEDOR PARA LOS AÑOS SUPERIORES #}
-    <div class="top-years-header">
-        {% set rendered_years = [] %}
-        {% for semestre_num, semestre_data in semestres_info.items() %}
-            {# Para agrupar los semestres en años completos, ajusta la lógica aquí si es necesario
-               Actualmente, muestra el nombre del año sin "y Medio" y lo hace único #}
-            {% set year_display_name = semestre_data.nombre_año | replace(' y Medio', '') %}
-            {% if year_display_name not in rendered_years %}
-                <div class="year-header-item">
-                    <span>{{ year_display_name }}</span>
-                </div>
-                {% set _ = rendered_years.append(year_display_name) %}
-            {% endif %}
-        {% endfor %}
-        {# Para que "Año 5 y Medio" no aparezca en la parte superior como "Año 5" dos veces
-           y en su lugar se considere como un "Año 6" si la imagen de referencia lo muestra.
-           Si deseas un "Año 6" explícito para el semestre 11, ajusta app.py para que SEMESTRES_INFO
-           para el semestre 11 diga "Sexto Año" o similar, o ajusta la lógica aquí.
-           De momento, el "Quinto Año y Medio" del semestre 11 no generará un "Año 6" en la barra superior
-           porque se filtra por `replace(' y Medio', '')` que lo convierte en "Quinto Año".
-           Si necesitas explícitamente "Año 6" para el semestre 11 arriba, avísame. #}
-    </div>
-    {# FIN DEL NUEVO CONTENEDOR #}
+    <main id="malla-container">
+        </main>
 
-    <div class="malla-container">
-        {% for semestre_num, semestre_data in semestres_info.items() %}
-            <div class="semestre">
-                <div class="semestre-header">
-                    <h2>S.{{ semestre_data.numero }}</h2>
-                    <p>{{ semestre_data.nombre_año }}</p>
-                </div>
-                <div class="ramos-list">
-                    {% for ramo in ramos_por_semestre[semestre_num] %}
-                        <div class="ramo-card"
-                             id="ramo-{{ ramo.id }}"
-                             data-ramo-id="{{ ramo.id }}"
-                             data-prerequisitos="{{ ramo.prerequisitos | join(',') }}"
-                             style="background-color: {{ categorias.get(ramo.categoria, '#CCCCCC') }};">
-                            {# Nuevo contenedor para el ID del ramo y los prerrequisitos #}
-                            <div class="ramo-meta">
-                                <span class="ramo-id-circle">{{ ramo.id }}</span>
-                                {% if ramo.prerequisitos %}
-                                    <div class="ramo-mini-prereqs">
-                                        {% for prereq_id in ramo.prerequisitos %}
-                                            <span class="mini-prereq-box">{{ prereq_id }}</span>
-                                        {% endfor %}
-                                    </div>
-                                {% endif %}
-                            </div>
-                            {# FIN Nuevo contenedor para el ID del ramo y los prerrequisitos #}
+    <footer>
+        <p>&copy; 2025 Malla Interactiva. Creado para estudiantes de Ingeniería Civil.</p>
+    </footer>
 
-                            <span class="ramo-siglas">{{ ramo.siglas }}</span>
-                            <p class="ramo-nombre">{{ ramo.nombre }}</p>
-                            <span class="ramo-creditos">{{ ramo.creditos }} SCT</span>
-                            {# El div de .ramo-prerequisitos grande se mantiene por si quieres la lista completa abajo #}
-                            {% if ramo.prerequisitos %}
-                                <div class="ramo-prerequisitos">
-                                    Req: {{ ramo.prerequisitos | join(', ') }}
-                                </div>
-                            {% endif %}
-                            <div class="ramo-check">✔️</div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-
-    <div class="leyenda">
-        <h3>Leyenda de Categorías</h3>
-        {% for categoria, color in categorias.items() %}
-            <div class="leyenda-item">
-                <span class="leyenda-color" style="background-color: {{ color }};"></span>
-                <span>{{ categoria }}</span>
-            </div>
-        {% endfor %}
-    </div>
+    <script src="script.js"></script>
+</body>
+</html>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
