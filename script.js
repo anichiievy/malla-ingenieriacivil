@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "55": {"id": "55", "siglas": "ICIV525", "nombre": "Taller de Título I", "creditos": 12, "prerequisitos": ["46", "47", "48"], "semestre": 10, "categoria": "Talleres/Prácticas"},
         "56": {"id": "56", "siglas": "ICIV526", "nombre": "Inglés III", "creditos": 2, "prerequisitos": ["44"], "semestre": 10, "categoria": "Humanista"},
 
-        "57": {"id": "57", "siglas": "ICIV611", "nombre": "Taller de Título II", "creditos": 30, "prerequisitos": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56"], "semestre": 11, "categoria": "Talleres/Prácticas"},
+        "57": {"id": "57", "siglas": "ICIV611", "nombre": "Taller de Título II", "creditos": 30, "prerequisitos": ["54", "55", "56"], "semestre": 11, "categoria": "Talleres/Prácticas"},
         "58": {"id": "58", "siglas": "PRAPRO", "nombre": "Práctica Profesional", "creditos": 0, "prerequisitos": [], "semestre": 11, "categoria": "Talleres/Prácticas"},
     };
     // --- FIN DE DATOS DE LA MALLA ---
