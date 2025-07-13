@@ -5,29 +5,30 @@ body {
     padding: 0;
     background-color: #fce4ec; /* Rosa muy claro para el fondo */
     color: #333;
-    line-height: 1.6;
+    line-height: 1.4; /* Espaciado de línea más compacto */
     overflow-x: hidden; /* Evita scroll horizontal no deseado */
+    font-size: 14px; /* Fuente base ligeramente más pequeña para mayor densidad */
 }
 
 /* Header Styles */
 header {
     background-color: #e91e63; /* Rosa vibrante */
     color: white;
-    padding: 15px 0; /* Menos padding */
+    padding: 10px 0; /* Menos padding aún */
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px; /* Menos margen */
 }
 
 header h1 {
     margin: 0;
-    font-size: 2.5em; /* Tamaño de fuente ligeramente reducido */
-    letter-spacing: 1px;
+    font-size: 2em; /* Tamaño de fuente más reducido */
+    letter-spacing: 0.8px;
 }
 
 header h2 {
-    margin: 5px 0 10px; /* Menos margen */
-    font-size: 1.3em; /* Tamaño de fuente ligeramente reducido */
+    margin: 3px 0 8px; /* Menos margen */
+    font-size: 1.1em; /* Tamaño de fuente más reducido */
     font-weight: 400;
     opacity: 0.9;
 }
@@ -35,53 +36,54 @@ header h2 {
 /* Legend Styles */
 .legend {
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 12px 15px; /* Menos padding */
-    margin: 10px auto 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 90%; /* Más flexible */
+    padding: 10px 12px; /* Menos padding */
+    margin: 8px auto 0;
+    border-radius: 6px; /* Borde más pequeño */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    max-width: 95%; /* Más flexible */
     text-align: left;
     color: #333;
-    font-size: 0.9em; /* Fuente más pequeña */
+    font-size: 0.85em; /* Fuente más pequeña */
 }
 
 .legend h3 {
     margin-top: 0;
-    font-size: 1.1em; /* Fuente más pequeña */
+    font-size: 1em; /* Fuente más pequeña */
     color: #e91e63;
-    border-bottom: 1px solid #f8bbd0; /* Borde más delgado */
+    border-bottom: 1px solid #f8bbd0;
     padding-bottom: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 #category-legend {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 15px; /* Espaciado más pequeño */
+    gap: 6px 10px; /* Espaciado más pequeño */
     justify-content: center;
 }
 
 .legend-item {
     display: flex;
     align-items: center;
-    font-size: 0.85em; /* Fuente más pequeña */
+    font-size: 0.8em; /* Fuente más pequeña */
 }
 
 .legend-color-box {
-    width: 18px; /* Tamaño más pequeño */
-    height: 18px; /* Tamaño más pequeño */
-    border-radius: 4px;
-    margin-right: 6px; /* Margen más pequeño */
+    width: 16px; /* Tamaño más pequeño */
+    height: 16px; /* Tamaño más pequeño */
+    border-radius: 3px;
+    margin-right: 5px; /* Margen más pequeño */
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-/* Main Malla Container - CAMBIO CLAVE AQUÍ */
+/* Main Malla Container - AJUSTE CLAVE AQUÍ */
 #malla-container {
-    display: grid; /* Usamos Grid para mayor control */
-    /* Calcula automáticamente cuantas columnas caben, mínimo 250px por columna */
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Ajusta minmax para más semestres por fila */
-    gap: 15px; /* Espaciado entre columnas/filas más pequeño */
-    padding: 15px; /* Padding reducido */
+    display: grid;
+    /* Permite más columnas, minmax reducido para semestres más delgados */
+    /* Calcula hasta 11 columnas si el ancho de pantalla lo permite */
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* ¡Ajuste importante aquí! */
+    gap: 10px; /* Espaciado entre columnas/filas más pequeño */
+    padding: 10px; /* Padding reducido */
     max-width: 100%; /* Ocupa el ancho completo disponible */
     margin: 0 auto;
     box-sizing: border-box; /* Incluye padding en el ancho total */
@@ -90,55 +92,56 @@ header h2 {
 /* Semestre Column Styles - Ligeramente más compactos */
 .semestre-column {
     background-color: #fff;
-    border-radius: 10px; /* Borde un poco más pequeño */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
-    padding: 15px; /* Padding reducido */
+    border-radius: 8px; /* Borde un poco más pequeño */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
+    padding: 10px; /* Padding reducido */
     text-align: center;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .semestre-column:hover {
-    transform: translateY(-3px); /* Menor movimiento en hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px); /* Menor movimiento en hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
 }
 
 .semestre-column h3 {
     color: #e91e63;
     margin-top: 0;
-    margin-bottom: 15px; /* Margen reducido */
-    font-size: 1.5em; /* Fuente más pequeña */
+    margin-bottom: 10px; /* Margen reducido */
+    font-size: 1.2em; /* Fuente más pequeña */
     border-bottom: 1px solid #f8bbd0;
-    padding-bottom: 8px;
+    padding-bottom: 5px;
 }
 
-/* Ramo Card Styles - Más compactos */
+/* Ramo Card Styles - MÁS COMPACTOS */
 .ramo-card {
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 6px; /* Borde más pequeño */
-    padding: 12px; /* Padding reducido */
-    margin-bottom: 12px; /* Margen reducido */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra más sutil */
+    border-radius: 5px; /* Borde más pequeño */
+    padding: 8px; /* ¡Padding mucho más reducido! */
+    margin-bottom: 8px; /* Margen reducido */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Sombra más sutil */
     cursor: pointer;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s ease;
+    transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background-color 0.2s ease;
     position: relative;
     overflow: hidden;
+    font-size: 0.85em; /* Fuente base para el ramo más pequeña */
 }
 
 .ramo-card:last-child {
-    margin-bottom: 0; /* Elimina margen inferior del último ramo en la columna */
+    margin-bottom: 0;
 }
 
 .ramo-card:hover {
-    transform: translateY(-2px); /* Menor movimiento en hover */
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px); /* Menor movimiento en hover */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
 }
 
 .ramo-card.approved {
     background-color: #dcedc8;
     border-color: #aed581;
     color: #4a652a;
-    box-shadow: inset 0 0 8px rgba(0, 100, 0, 0.15); /* Sombra de aprobado más sutil */
+    box-shadow: inset 0 0 5px rgba(0, 100, 0, 0.1); /* Sombra de aprobado más sutil */
 }
 
 .ramo-card.locked {
@@ -146,26 +149,26 @@ header h2 {
     border-color: #ffb74d;
     color: #7d4e00;
     cursor: not-allowed;
-    opacity: 0.8; /* Opacidad ligeramente aumentada para visibilidad */
+    opacity: 0.85; /* Opacidad ligeramente aumentada para visibilidad */
 }
 
 .ramo-card h4 {
-    margin: 0 0 6px; /* Margen reducido */
-    font-size: 1.1em; /* Fuente más pequeña */
+    margin: 0 0 4px; /* Margen reducido */
+    font-size: 1em; /* Fuente más pequeña para el nombre */
     color: #333;
 }
 
 .ramo-card p {
     margin: 0;
-    font-size: 0.8em; /* Fuente más pequeña */
+    font-size: 0.75em; /* Fuente más pequeña para créditos */
     color: #555;
 }
 
 .ramo-card .siglas {
     font-weight: bold;
     color: #e91e63;
-    font-size: 1em; /* Fuente más pequeña */
-    margin-bottom: 4px; /* Margen reducido */
+    font-size: 0.9em; /* Fuente más pequeña para siglas */
+    margin-bottom: 3px; /* Margen reducido */
     display: block;
 }
 
@@ -175,129 +178,117 @@ header h2 {
     top: 0;
     left: 0;
     width: 100%;
-    height: 5px; /* Barra más delgada */
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
+    height: 4px; /* Barra más delgada */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 /* Prerequisite ID Display */
 .prerequisite-ids {
     position: absolute;
-    bottom: 5px;
-    right: 5px;
+    bottom: 3px; /* Más cerca del borde */
+    right: 3px; /* Más cerca del borde */
     display: flex;
-    gap: 2px; /* Espaciado más pequeño */
+    gap: 1px; /* Espaciado mínimo */
     flex-wrap: wrap;
     z-index: 1;
 }
 
 .prerequisite-id-badge {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid #ccc;
-    border-radius: 3px; /* Borde más pequeño */
-    padding: 1px 4px; /* Padding reducido */
-    font-size: 0.65em; /* Fuente más pequeña */
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 1px solid #bbb; /* Borde más oscuro para visibilidad */
+    border-radius: 2px; /* Borde más pequeño */
+    padding: 0px 3px; /* Padding reducido al mínimo */
+    font-size: 0.55em; /* ¡Fuente muy pequeña para los badges! */
     font-weight: bold;
-    color: #777;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    color: #555;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.05);
 }
 
 /* Approved State Indicator (Checkmark) */
 .ramo-card.approved::after {
     content: '✔';
     position: absolute;
-    top: 8px; /* Posición ajustada */
-    right: 8px; /* Posición ajustada */
-    font-size: 1.8em; /* Tamaño ligeramente reducido */
+    top: 5px; /* Posición ajustada */
+    right: 5px; /* Posición ajustada */
+    font-size: 1.5em; /* Tamaño más reducido */
     color: #4CAF50;
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 /* Locked State Indicator (Lock icon) */
 .ramo-card.locked::before {
     content: '🔒';
     position: absolute;
-    top: 8px; /* Posición ajustada */
-    right: 8px; /* Posición ajustada */
-    font-size: 1.6em; /* Tamaño ligeramente reducido */
+    top: 5px; /* Posición ajustada */
+    right: 5px; /* Posición ajustada */
+    font-size: 1.3em; /* Tamaño más reducido */
     color: #ff9800;
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 /* Footer Styles */
 footer {
     text-align: center;
-    padding: 15px; /* Padding reducido */
-    margin-top: 25px;
+    padding: 10px; /* Padding reducido */
+    margin-top: 20px;
     background-color: #e91e63;
     color: white;
-    font-size: 0.8em; /* Fuente más pequeña */
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+    font-size: 0.75em; /* Fuente más pequeña */
+    box-shadow: 0 -1px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive Design (Ajustes para que se adapte mejor) */
-@media (max-width: 1200px) { /* Más compacto en pantallas medianas */
+/* Responsive Design - Ajustes críticos para que todo quepa */
+@media (min-width: 1700px) { /* Pantallas muy anchas, intentar 11 columnas */
     #malla-container {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Reducir el minwidth */
+        grid-template-columns: repeat(11, minmax(130px, 1fr)); /* Fuerza 11 columnas */
     }
 }
 
-@media (max-width: 900px) { /* Dos columnas en tablets */
+@media (max-width: 1699px) and (min-width: 1400px) { /* Pantallas grandes */
     #malla-container {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); /* Podrían ser 9-10 columnas */
     }
 }
 
-@media (max-width: 768px) { /* Una columna en móviles */
+@media (max-width: 1399px) and (min-width: 1100px) { /* Laptops típicos */
+    #malla-container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 7-8 columnas */
+    }
+}
+
+@media (max-width: 1099px) and (min-width: 800px) { /* Tablets grandes o laptops pequeños */
+    #malla-container {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* 5-6 columnas */
+    }
+}
+
+@media (max-width: 799px) and (min-width: 600px) { /* Tablets pequeños */
+    #malla-container {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* 3-4 columnas */
+    }
+}
+
+@media (max-width: 599px) { /* Móviles */
     #malla-container {
         grid-template-columns: 1fr; /* Una columna */
-        padding: 10px;
+        padding: 8px;
     }
-    .semestre-column {
-        width: 95%; /* Ocupa casi todo el ancho */
-        max-width: 400px;
-        margin: 0 auto; /* Centrar */
-    }
-
-    .legend {
-        padding: 8px 10px;
-        font-size: 0.8em;
-    }
-
-    .legend h3 {
-        font-size: 1em;
-    }
-
-    #category-legend {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
-
-    .ramo-card {
-        padding: 10px;
-    }
-    .ramo-card h4 {
-        font-size: 1em;
-    }
-    .ramo-card p {
-        font-size: 0.75em;
-    }
-    .ramo-card .siglas {
-        font-size: 0.9em;
-    }
-}
-
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 1.8em;
-    }
-
-    header h2 {
-        font-size: 1.1em;
-    }
-
     .semestre-column {
         width: 98%;
+        max-width: 300px; /* Más compacto en móviles */
+        margin: 0 auto 10px; /* Centrar y añadir margen inferior */
     }
+    header h1 { font-size: 1.5em; }
+    header h2 { font-size: 1em; }
+    .legend { font-size: 0.75em; padding: 5px 8px; }
+    .ramo-card { padding: 6px; font-size: 0.8em; }
+    .ramo-card h4 { font-size: 0.9em; }
+    .ramo-card p { font-size: 0.7em; }
+    .ramo-card .siglas { font-size: 0.8em; }
+    .prerequisite-id-badge { font-size: 0.5em; padding: 0 2px; }
+    .ramo-card.approved::after, .ramo-card.locked::before {
+        font-size: 1.2em; top: 4px; right: 4px;
+    }
+    footer { font-size: 0.7em; padding: 8px; }
 }
